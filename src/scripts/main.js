@@ -1,21 +1,27 @@
 'use strict';
 
 // write code here
+document.addEventListener('DOMContentLoaded', () => {
+  const wall = document.querySelector('.wall');
+  const spider = document.querySelector('.spider');
 
-const wall = document.querySelector('.wall');
-const spider = document.querySelector('.spider');
+  if (!wall || !spider) {
+    return;
+  }
 
-const wallWidth = wall.clientWidth;
-const wallHeight = wall.clientHeight;
-const spiderWidth = spider.clientWidth;
-const spiderHeight = spider.clientHeight;
+  function moveSpider() {
+    const wallWidth = wall.clientWidth;
+    const wallHeight = wall.clientHeight;
+    const spiderWidth = spider.clientWidth;
+    const spiderHeight = spider.clientHeight;
 
-function moveSpider() {
-  const x = (wallWidth - spiderWidth) / 2;
-  const y = (wallHeight - spiderHeight) / 2;
+    const x = (wallWidth - spiderWidth) / 2;
+    const y = (wallHeight - spiderHeight) / 2;
 
-  spider.style.left = `${x}px`;
-  spider.style.top = `${y}px`;
-}
+    spider.style.left = `${x}px`;
+    spider.style.top = `${y}px`;
+  }
 
-moveSpider();
+  moveSpider();
+  window.addEventListener('resize', moveSpider);
+});
